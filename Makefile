@@ -5,7 +5,7 @@ all: index.html style/screen.min.css validate
 
 minify: index.html style/screen.min.css
 
-index.html:
+index.html: _index.html
 	cat _index.html | \
 	sed 's/screen\.css/screen.min.css/' | \
 	html-minifier --collapse-boolean-attributes \
@@ -24,7 +24,7 @@ index.html:
 								> \
 	index.html
 
-style/screen.min.css:
+style/screen.min.css: style/screen.css
 	csso style/screen.css style/screen.min.css
 
 validate: validate-html validate-css
